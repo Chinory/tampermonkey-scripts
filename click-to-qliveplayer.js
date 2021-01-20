@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Click to QLivePlayer
-// @version      0.2.0
+// @version      0.2.1
 // @description  Open QLivePlayer instead when click on video link in BiliBili
 // @author       Chinory
 // @homepage     https://github.com/Chinory/tampermonkey-scripts/wiki/click-to-qliveplayer.js
@@ -34,19 +34,19 @@ function rewrite(l) {
 unsafeWindow.addEventListener(
   "click",
   function (e) {
-    var a, l, u;
-    (a = e.target.closest("a")) &&
-      (l = new URL(a.href, this.location.href)) &&
-      (u = rewrite(l)) &&
-      open.call(this, u, "_self") &&
-      e.preventDefault();
+    var a = e.target.closest("a");
+    if (a) {
+      var u = rewrite(new URL(a.href, this.location.href));
+      if (u && open.call(this, u, "_self")) {
+        return e.preventDefault();
+      }
+    }
   },
   true
 );
 
-unsafeWindow.open = function (a) {
-  var l = new URL(a, this.location.href);
-  var u = rewrite(l);
+unsafeWindow.open = function (r) {
+  var u = rewrite(new URL(r, this.location.href));
   if (u) return open.call(this, u, "_self");
   else return open.apply(this, arguments);
 };
