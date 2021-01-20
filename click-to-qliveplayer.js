@@ -4,6 +4,7 @@
 // @description  Open QLivePlayer instead when click on video link in BiliBili
 // @author       Chinory
 // @homepage     https://github.com/Chinory/tampermonkey-scripts/wiki/click-to-qliveplayer.js
+// @downloadURL  https://raw.githubusercontent.com/Chinory/tampermonkey-scripts/main/click-to-qliveplayer.js
 // @match        *://*.bilibili.com/*
 // @grant        unsafeWindow
 
