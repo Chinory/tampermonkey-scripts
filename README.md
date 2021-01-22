@@ -3,6 +3,6 @@ My Tampermonkey scripts.
 
 Each script has a Wiki page with the same file name.
 
-### click-to-qliveplayer.js
+### click-to-qliveplayer-*.js
 
-Open QLivePlayer instead when click on video link in BiliBili.
+Open QLivePlayer instead when click
