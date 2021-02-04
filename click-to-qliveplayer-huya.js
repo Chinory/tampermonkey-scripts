@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Click to QLivePlayer - Huya
-// @version      0.3.0
+// @version      0.3.1
 // @description  Open QLivePlayer instead when click on Huya
 // @author       Chinory
 // @homepage     https://github.com/Chinory/tampermonkey-scripts/wiki/Click-to-QLivePlayer
@@ -39,11 +39,10 @@ window.open = function qlp_open(url) {
 
 window.addEventListener("click", function qlp_href(e) {
   var a = e.target.closest("a")
-  if (a) {
-    var url = a.href;
-    var u = this.qlp_rewrite(url);
+  if (a && a.href) {
+    var u = this.qlp_rewrite(a.href);
     if (u && this.qlp_rawopen(u, "_self")) {
-      console.log("[QLivePlayer][href]", url);
+      console.log("[QLivePlayer][href]", a.href);
       return e.preventDefault();
     }
   }
